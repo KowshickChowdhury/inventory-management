@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import AuthApis from '../apis/AuthApis';
 
 const Navbar = () => {
   const [showNavLinks, setShowNavLinks] = useState(false);
@@ -8,7 +10,25 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    // Handle logout logic here
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Logout!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const res = AuthApis.logout();
+            if (res) {
+                localStorage.removeItem('email');
+                localStorage.removeItem('name');
+                localStorage.removeItem('token');
+                window.location.reload();
+            }
+      }
+    });
   };
 
   return (

@@ -10,10 +10,8 @@ const MainRoutes = createBrowserRouter([
         path: "/",
         element: <Master />,
         children : [
-            {
-                path: '/',
-                element: <Dashboard/>
-            }
+            {path: '/', element: <Dashboard/>},
+            {path: '/test', element: <Test/>}
         ]
     }
 ])

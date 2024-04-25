@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('app');
 });
 
+Route::group(['middleware'=>'auth:sanctum'], function () {
+    Route::get('/{any}', function () {
+        return view('app');
+    })->where('any','.*');
+});
+
 Route::get('/{any}', function () {
     return view('app');
 })->where('any','.*');

@@ -9,6 +9,7 @@ function Main() {
   useEffect(() => {
     if (localStorage.token != undefined){
       setAuth(true);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.token}`
     }
   }, [])
   return (

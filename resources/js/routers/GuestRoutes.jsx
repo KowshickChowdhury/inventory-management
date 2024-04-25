@@ -5,7 +5,7 @@ import Signup from '../components/Signup'
 
 const GuestRoutes = createBrowserRouter([
     {path : "/", element: <Login />},
-    {path : "/signup", element: <Signup />}
+    {path : "/signup", element: <Signup />},
 ])
 
 export default GuestRoutes

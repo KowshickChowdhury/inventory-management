@@ -54,4 +54,10 @@ class AuthController extends Controller
             'email' => ['The Provided credentials are incorret']
         ]);
     }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+        return $this->sendResponse(['msg' => 'You have successfully logged out']);
+    }
 }

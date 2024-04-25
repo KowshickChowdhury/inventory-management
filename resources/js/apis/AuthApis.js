@@ -56,4 +56,15 @@ AuthApis.login = async (data) => {
     return res;
 }
 
+AuthApis.logout = async (data) => {
+    let url = "/api/logout";
+    const res = await axios.post(url, data)
+        .then(response => {
+            return response.data;
+        }).catch(error => { 
+            return error;
+        });
+    return res;
+}
+
 export default AuthApis;
