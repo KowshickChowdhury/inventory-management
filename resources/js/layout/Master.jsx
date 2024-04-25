@@ -7,8 +7,11 @@ function Master() {
   return (
     <>
     <Navbar />
-    <div>
-        <Outlet/>
+    <div className="flex">
+        <Sidenav />
+        <div className="flex-grow">
+            <Outlet />
+        </div>
     </div>
     </>
   )

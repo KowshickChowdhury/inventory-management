@@ -53,7 +53,7 @@ function Login() {
                 setMessage(errorMessages);
                 setTimeout(() => {
                   setMessage('');
-                }, 3000);
+                }, 5000);
             }
             console.log('first', res)
         }
@@ -95,6 +95,7 @@ function Login() {
                         <button type="button" onClick={handleSubmit} className="w-full py-2.5 px-4 text-sm rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                             {loading ? 'Loading...' : 'Login'}
                         </button>
+                        <p className="text-sm mt-6 text-center">Don't have an account? <a href="/signup" className="text-blue-600 font-semibold hover:underline ml-1">Signup here</a></p>
                         </div>
                     </form>
                 </div>

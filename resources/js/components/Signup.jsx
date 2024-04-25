@@ -5,6 +5,7 @@ import AuthApis from '../apis/AuthApis';
 function Signup() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     const [input, setInput] = useState({
         name: '',
@@ -51,8 +52,15 @@ function Signup() {
                 setMessage(res.data.message);
                 setTimeout(() => {
                     setMessage('');
-                    navigate('/login');
+                    navigate('/');
                 }, 1000)
+            } else if (res.errors) {
+                setError(res);
+                const errorMessages = Object.values(res.errors).join('. ');
+                setMessage(errorMessages);
+                setTimeout(() => {
+                  setMessage('');
+                }, 5000);
             }
         }
     }
@@ -75,7 +83,7 @@ function Signup() {
                                     {validation.name && <p className="text-red-500 text-sm">Name is required</p>}
                                 </div>
                                 <div>
-                                    <label className="text-sm mb-2 block">Email Id</label>
+                                    <label className="text-sm mb-2 block">Email</label>
                                     <div className="relative flex items-center">
                                         <input name="email" type="email" onChange={handleInput} required className={`bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded outline-blue-500 ${validation.email && 'border-red-500'}`} placeholder="Enter email" />
                                     </div>
@@ -90,13 +98,18 @@ function Signup() {
                                 </div>
                                 {/* Other form fields */}
                             </div>
-                            {message && <p className="text-green-500 text-base font-bold mt-2">{message}</p>}
+                            {error && message && (
+                                <p className="text-red-500 text-base font-bold mt-2">
+                                    {message}
+                                </p>
+                            )}
+                            {!error && message && <p className="text-green-500 text-base font-bold mt-2">{message}</p>}
                             <div className="!mt-10">
                                 <button type="button" onClick={handleSubmit} className="w-full py-3 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                                 {loading ? 'Loading...' : 'Create an account'}
                                 </button>
                             </div>
-                            <p className="text-sm mt-6 text-center">Already have an account? <a href="/login" className="text-blue-600 font-semibold hover:underline ml-1">Login here</a></p>
+                            <p className="text-sm mt-6 text-center">Already have an account? <a href="/" className="text-blue-600 font-semibold hover:underline ml-1">Login here</a></p>
                         </form>
                     </div>
                 </div>
