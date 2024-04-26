@@ -52,7 +52,7 @@ function Signup() {
                 setMessage(res.data.message);
                 setTimeout(() => {
                     setMessage('');
-                    navigate('/');
+                    navigate('/login');
                 }, 1000)
             } else if (res.errors) {
                 setError(res);

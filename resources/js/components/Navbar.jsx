@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import AuthApis from '../apis/AuthApis';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [showNavLinks, setShowNavLinks] = useState(false);
+  const navigate = useNavigate();
 
   const handleToggleNav = () => {
     setShowNavLinks(!showNavLinks);
@@ -25,7 +27,8 @@ const Navbar = () => {
                 localStorage.removeItem('email');
                 localStorage.removeItem('name');
                 localStorage.removeItem('token');
-                window.location.reload();
+                navigate('/login')
+
             }
       }
     });
@@ -43,11 +46,11 @@ const Navbar = () => {
             {showNavLinks ? "Close" : "Menu"}
           </button>
           <div className={`md:flex ${showNavLinks ? "block" : "hidden"}`}>
-            <a href="/dashboard" className="text-white mx-4">
+            <a href="/" className="text-white mx-4">
               Dashboard
             </a>
-            <a href="/profile" className="text-white mx-4">
-              Profile
+            <a href="/category" className="text-white mx-4">
+              Category
             </a>
             <button onClick={handleLogout} className="text-white mx-4">
               Logout

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import AuthApis from '../apis/AuthApis';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
     const[input, setInput] = useState({
         email: '',
         password: '',
@@ -47,7 +49,8 @@ function Login() {
                 localStorage.email = res.data.data.email;
                 localStorage.name = res.data.data.name;
                 localStorage.token = res.data.data.token;
-                window.location.reload();
+                // window.location.reload();
+                navigate('/')
             } else if (res.errors) {
                 const errorMessages = Object.values(res.errors).join('. ');
                 setMessage(errorMessages);

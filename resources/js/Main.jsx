@@ -1,36 +1,56 @@
-import React, { useEffect, useState } from 'react';
+// Main.js
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MainRoutes from './routers/MainRoutes';
-import { RouterProvider } from 'react-router-dom';
-import GuestRoutes from './routers/GuestRoutes';
+import { Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider} from 'react-router-dom';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Test from './components/Test';
+import Dashboard from './components/Dashboard';
+import withAuth from './routers/Auth';
+import Auth from './routers/Auth';
+import Category from './components/Category';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">        
+      <Route element={<Auth />}>
+        <Route index element={<Dashboard />} />
+        <Route path="category" element={<Category />} />
+      </Route>
+      <Route path="login" element={<Login />} />
+      <Route path="signup" element={<Signup />} />
+      <Route path="*" element={<h1>Page not found</h1>} />
+    </Route>
+  )
+);
+
 
 function Main() {
-  const [auth, setAuth] = useState(false);
-  useEffect(() => {
-    if (localStorage.token != undefined){
-      setAuth(true);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.token}`
-    }
-  }, [])
-  return (
-    <>
-        {auth ?
-        <RouterProvider router={MainRoutes} />
-        :
-        <RouterProvider router={GuestRoutes} />
-        }
-    </>
-  )
+ 
+  return <RouterProvider router={router} />
+  // return (
+  //   <Router>
+  //     <Routes>
+  //       <Route path="/login" element={<Login />} />
+  //       <Route path="/" element={withAuth(Dashboard)} />
+  //       <Route path="/test" element={withAuth(Test)} />
+  //       <Route path="/signup" element={<Signup />} />
+  //     </Routes>
+  //   </Router>
+  // );
 }
 
 export default Main;
 
 if (document.getElementById('root')) {
-    const Index = ReactDOM.createRoot(document.getElementById("root"));
+  const Index = ReactDOM.createRoot(document.getElementById("root"));
 
-    Index.render(
-        <React.StrictMode>
-            <Main/>
-        </React.StrictMode>
-    )
+  Index.render(
+    <React.StrictMode>
+      <Main/>
+    </React.StrictMode>
+  );
 }
