@@ -36,8 +36,8 @@ const Navbar = () => {
 
   return (
     <nav className="border-gray-200 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <div className="text-white font-bold my-4">Inventory Management</div>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <a href='/' className="text-white font-bold my-4 no-underline">Inventory Management</a>
         <div className="my-4">
           <button
             className="text-white focus:outline-none md:hidden"
@@ -46,13 +46,13 @@ const Navbar = () => {
             {showNavLinks ? "Close" : "Menu"}
           </button>
           <div className={`md:flex ${showNavLinks ? "block" : "hidden"}`}>
-            <a href="/" className="text-white mx-4">
+            <a href="/" className="text-white mx-4 no-underline">
               Dashboard
             </a>
-            <a href="/category" className="text-white mx-4">
+            <a href="/category" className="text-white mx-4 no-underline">
               Category
             </a>
-            <button onClick={handleLogout} className="text-white mx-4">
+            <button onClick={handleLogout} className="text-white mx-4 no-underline">
               Logout
             </button>
           </div>

@@ -44,4 +44,35 @@ class CategoryController extends Controller
             'name'=>'required|max:150'
         ]);
     }
+
+    public function update(Request $request)
+    {
+        $input = $request->all();
+        $this->validator($input)->validate();
+        $cat_id = $request->input('cat_id');
+        $inventory = Invertory::where('id', $cat_id)->first();
+
+        if (!$inventory) {
+            return $this->sendError('Inventory not found.', [], 404);
+        }
+
+        $inventory->name = $request->input('name');
+        $inventory->description = $request->input('description');
+        $inventory->user_id = Auth::id();
+        // You might want to add validation or checks here if necessary before updating
+
+        $inventory->save();
+
+        return $this->sendResponse([
+            'message' => 'Inventory updated successfully!',
+            'data' => $inventory
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        Invertory::destroy($id);
+        return $this->sendResponse(['message' => 'Inventory deleted successfully']);
+    }
+
 }

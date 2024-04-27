@@ -7,6 +7,85 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Inventory Management System
+
+Welcome to the Inventory Management System! This project is built using Laravel for the backend and React for the frontend.
+
+## Table of Contents
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+
+These instructions will guide you through setting up and running the project on your local machine.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- PHP (version >= 7.3)
+- Composer (Dependency Manager for PHP)
+- Node.js (version >= 12.x)
+- npm (Node Package Manager) or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+
+2. Navigate to the project directory:
+
+    cd inventory-management-system
+
+3. Install backend dependencies:
+
+    composer install
+
+4. Set up Laravel environment:
+
+    Copy the .env.example file to .env:
+
+    cp .env.example .env
+
+5. Generate the application key:
+
+    php artisan key:generate
+
+    Configure your database in the .env file.
+
+6. Migrate the database:
+
+    php artisan migrate
+
+7. Install frontend dependencies:
+
+    npm install
+    # or
+    yarn install
+
+Usage
+To run the project, follow these steps:
+
+1. Start the Laravel backend server:
+
+    php artisan serve
+
+2. Start the React frontend development server:
+
+    npm start
+    # or
+    yarn start
+
+3. Access the application in your browser:
+
+    http://localhost:3000
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

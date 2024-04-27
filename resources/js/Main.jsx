@@ -11,7 +11,8 @@ import Test from './components/Test';
 import Dashboard from './components/Dashboard';
 import withAuth from './routers/Auth';
 import Auth from './routers/Auth';
-import Category from './components/Category';
+import Category from './pages/Category';
+import Item from './pages/Item';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route element={<Auth />}>
         <Route index element={<Dashboard />} />
         <Route path="category" element={<Category />} />
+        <Route path="item" element={<Item />} />
       </Route>
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />

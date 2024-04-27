@@ -1,7 +1,7 @@
-const CategoryApis = {};
+const ItemApis = {};
 
-CategoryApis.index = async() => {
-    const res = await axios.get("/api/category")
+ItemApis.index = async() => {
+    const res = await axios.get("/api/item")
         .then(response => {
             return response.data;
         })
@@ -11,8 +11,8 @@ CategoryApis.index = async() => {
     return res;
 };
 
-CategoryApis.save = async (data) => {
-    let url = "/api/category";
+ItemApis.save = async (data) => {
+    let url = "/api/item";
     const res = await axios.post(url, data)
         .then(response => {
             return response.data;
@@ -39,8 +39,8 @@ CategoryApis.save = async (data) => {
     return res;
 }
 
-CategoryApis.update = async(data) => {
-    let url = `/api/category-update`;
+ItemApis.update = async(data) => {
+    let url = `/api/item-update`;
     try {
         const response = await axios.post(url, data);
         return response.data;
@@ -66,8 +66,8 @@ CategoryApis.update = async(data) => {
     }
 }
 
-CategoryApis.delete = async (id) => {
-    const url = `/api/category/${id}`;
+ItemApis.delete = async (id) => {
+    const url = `/api/item/${id}`;
     try {
         const response = await axios.delete(url);
         return response.data;
@@ -77,4 +77,4 @@ CategoryApis.delete = async (id) => {
     }
 };
 
-export default CategoryApis;
+export default ItemApis;

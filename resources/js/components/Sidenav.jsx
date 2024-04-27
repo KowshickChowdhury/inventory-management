@@ -4,8 +4,9 @@ const Sidenav = () => {
   return (
     <div className="bg-gray-200 h-screen w-2/12">
       <ul>
-          <li><a href="/page1" className="block p-4">Page 1</a></li>
-          <li><a href="/page2" className="block p-4">Page 2</a></li>
+          <li><a href="/" className="block p-4 no-underline font-black">Dashboard</a></li>
+          <li><a href="/category" className="block p-4 no-underline font-black">Category</a></li>
+          <li><a href="/item" className="block p-4 no-underline font-black">Item</a></li>
       </ul>
   </div>
   );
