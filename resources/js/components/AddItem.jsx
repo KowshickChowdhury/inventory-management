@@ -46,6 +46,9 @@ function AddItem({ setMessage, editFormData, editing, onCancelEdit, getItems }) 
 
   const toggleModal = () => {
     setShowModal(!showModal);
+    if (onCancelEdit && editing) {
+        onCancelEdit();
+    }
   };
 
   const getCategory = async() => {
@@ -143,7 +146,7 @@ function AddItem({ setMessage, editFormData, editing, onCancelEdit, getItems }) 
             <div className="relative bg-white rounded-lg left-12">
               {/* Your form content here */}
               <div  className='flex justify-between border-b-[1px] border-[#e5e5e5] p-8'>
-                <h2 className="text-3xl font-black">Add Item</h2>
+                <h2 className="text-3xl font-black">{editing ? 'Edit Item' : 'Add Item'}</h2>
                 <button onClick={toggleModal} className=" text-gray-500 hover:text-gray-700 focus:outline-none">
                     <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -200,7 +203,7 @@ function AddItem({ setMessage, editFormData, editing, onCancelEdit, getItems }) 
               </form>
               <div className="flex justify-end border-t-[1px] p-8">
                 <button type="button" onClick={toggleModal} className="bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-md mr-2 focus:outline-none hover:bg-gray-400 transition duration-150 ease-in-out drop-shadow-md">Cancel</button>
-                <button type="submit" onClick={handleSubmit} className="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md focus:outline-none hover:bg-indigo-600 transition duration-150 ease-in-out drop-shadow-md">Submit</button>
+                <button type="submit" onClick={handleSubmit} className="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md focus:outline-none hover:bg-indigo-600 transition duration-150 ease-in-out drop-shadow-md">{editing ? 'Update' : 'Submit'}</button>
               </div>
             </div>
           </div>
