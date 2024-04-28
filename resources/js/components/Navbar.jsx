@@ -36,14 +36,14 @@ const Navbar = () => {
 
   return (
     <nav className="border-gray-200 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-80 md:max-w-7xl mx-auto flex justify-between items-center">
         <a href='/' className="text-white font-bold my-4 no-underline">Inventory Management</a>
         <div className="my-4">
           <button
             className="text-white focus:outline-none md:hidden"
             onClick={handleToggleNav}
           >
-            {showNavLinks ? "Close" : "Menu"}
+            {showNavLinks ? "x" : "="}
           </button>
           <div className={`md:flex ${showNavLinks ? "block" : "hidden"}`}>
             <a href="/" className="text-white mx-4 no-underline">

@@ -32,7 +32,7 @@ function Dashboard() {
       <div className='bg-[#d1f4ff] p-4'>
         <div className='grid grid-cols-2'>
           <h2 className='text-2xl font-bold mb-2'>Categories</h2>
-          <p className='mt-[5px] ml-[92px]'>Total Categories: {categoryCount}</p>
+          <p className='mt-[5px] ml-[18px] md:ml-[92px]'>Total Categories: {categoryCount}</p>
         </div>
         <table className='w-full'>
           <thead>
@@ -52,7 +52,7 @@ function Dashboard() {
       <div className='bg-[#d1f4ff] p-4'>
         <div className='grid grid-cols-2'>
           <h2 className='text-2xl font-bold mb-2'>Items</h2>
-          <p className='mt-[5px] ml-[125px]'>Total Items: {itemCount}</p>
+          <p className='mt-[5px] ml-[70px] md:ml-[125px]'>Total Items: {itemCount}</p>
         </div>
         <table className='w-full'>
           <thead>
