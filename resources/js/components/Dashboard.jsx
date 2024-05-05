@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CategoryApis from '../apis/CategoryApis';
 import ItemApis from '../apis/ItemApis';
+import NoteContext from '../context/NoteContext';
 
 function Dashboard() {
   const [items, setItems] = useState([]);
   const [category, setCategory] = useState([]);
   const [categoryCount, setCategoryCount] = useState(0);
   const [itemCount, setItemCount] = useState(0);
+  const example = useContext(NoteContext);
+
+  // console.log('example', example)
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    example.update();
+  }, [])
+  
 
   const fetchData = async () => {
     try {

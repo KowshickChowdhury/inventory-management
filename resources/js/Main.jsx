@@ -13,6 +13,7 @@ import withAuth from './routers/Auth';
 import Auth from './routers/Auth';
 import Category from './pages/Category';
 import Item from './pages/Item';
+import NoteState from './context/NoteState';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +33,11 @@ const router = createBrowserRouter(
 
 function Main() {
  
-  return <RouterProvider router={router} />
+  return(
+    <NoteState>
+      <RouterProvider router={router} />
+    </NoteState>
+  ) 
   // return (
   //   <Router>
   //     <Routes>

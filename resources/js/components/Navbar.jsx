@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import AuthApis from '../apis/AuthApis';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [showNavLinks, setShowNavLinks] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleToggleNav = () => {
     setShowNavLinks(!showNavLinks);
@@ -46,13 +47,13 @@ const Navbar = () => {
             {showNavLinks ? "x" : "="}
           </button>
           <div className={`md:flex ${showNavLinks ? "block" : "hidden"}`}>
-            <a href="/" className="text-white mx-4 no-underline">
+            <Link to='/' className={`text-slate-200 mx-4 no-underline ${location.pathname === '/' ? '!text-white' : ''}`}>
               Dashboard
-            </a>
-            <a href="/category" className="text-white mx-4 no-underline">
+            </Link>
+            <Link to='/category' className={`text-slate-200 mx-4 no-underline ${location.pathname === '/category' ? '!text-white' : ''}`}>
               Category
-            </a>
-            <button onClick={handleLogout} className="text-white mx-4 no-underline">
+            </Link>
+            <button onClick={handleLogout} className="bg-white text-black font-semibold mx-4 p-1 rounded no-underline">
               Logout
             </button>
           </div>
